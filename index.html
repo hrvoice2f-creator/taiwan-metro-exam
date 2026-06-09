@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣捷運招考題庫｜北捷・桃捷・中捷・高捷 考古題搜尋與測驗</title>
+  <meta name="description" content="台北捷運、桃園捷運、台中捷運、高雄捷運招考考古題搜尋與線上測驗練習，附官方歷屆試題連結。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="logo"><span class="logo-mark"></span>捷運招考題庫</div>
+    <button data-view="home" class="active">首頁</button>
+    <button data-view="search">題庫搜尋</button>
+    <button data-view="quiz">測驗專區</button>
+    <button data-view="resources">官方考古題</button>
+  </nav>
+
+  <!-- ===== 首頁 ===== -->
+  <section class="view active" id="view-home" style="max-width:none;padding:0">
+    <div class="hero">
+      <div class="metro-lines">
+        <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <!-- 北捷 藍線 -->
+          <path id="lineB" class="mline" stroke="#0070BD" d="M -40 90 L 320 90 L 430 200 L 760 200 L 880 90 L 1240 90"/>
+          <!-- 桃捷 紫線 -->
+          <path id="lineP" class="mline" stroke="#8246AF" d="M -40 320 L 260 320 L 380 230 L 700 230 L 830 330 L 1240 330"/>
+          <!-- 中捷 綠線 -->
+          <path id="lineG" class="mline" stroke="#009A3E" d="M 150 460 L 150 260 L 260 150 L 620 150 L 740 60 L 1240 60"/>
+          <!-- 高捷 橘線 -->
+          <path id="lineO" class="mline" stroke="#DC4405" d="M -40 180 L 200 180 L 330 290 L 900 290 L 1010 180 L 1240 180"/>
+          <!-- 站點 -->
+          <circle class="mstation" stroke="#0070BD" r="6" cx="320" cy="90"/>
+          <circle class="mstation" stroke="#0070BD" r="6" cx="760" cy="200"/>
+          <circle class="mstation" stroke="#8246AF" r="6" cx="380" cy="230"/>
+          <circle class="mstation" stroke="#8246AF" r="6" cx="830" cy="330"/>
+          <circle class="mstation" stroke="#009A3E" r="6" cx="260" cy="150"/>
+          <circle class="mstation" stroke="#009A3E" r="6" cx="740" cy="60"/>
+          <circle class="mstation" stroke="#DC4405" r="6" cx="330" cy="290"/>
+          <circle class="mstation" stroke="#DC4405" r="6" cx="1010" cy="180"/>
+          <!-- 移動的列車光點 -->
+          <circle class="mtrain" r="7" fill="#4cc3ff" color="#4cc3ff">
+            <animateMotion dur="9s" repeatCount="indefinite"><mpath href="#lineB"/></animateMotion>
+          </circle>
+          <circle class="mtrain" r="7" fill="#c08be0" color="#c08be0">
+            <animateMotion dur="12s" repeatCount="indefinite"><mpath href="#lineP"/></animateMotion>
+          </circle>
+          <circle class="mtrain" r="7" fill="#3fd47e" color="#3fd47e">
+            <animateMotion dur="11s" repeatCount="indefinite"><mpath href="#lineG"/></animateMotion>
+          </circle>
+          <circle class="mtrain" r="7" fill="#ff8a5c" color="#ff8a5c">
+            <animateMotion dur="10s" repeatCount="indefinite"><mpath href="#lineO"/></animateMotion>
+          </circle>
+        </svg>
+      </div>
+      <h1>台灣捷運招考題庫</h1>
+      <p>北捷・桃捷・中捷・高捷｜近五年考古題搜尋 × 線上測驗練習 × 官方試題連結</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.querySelector('[data-view=quiz]').click()">🚇 開始測驗</button>
+        <button class="btn btn-ghost" onclick="document.querySelector('[data-view=search]').click()">🔍 搜尋考古題</button>
+      </div>
+      <div class="visitor-pill" title="累計到訪人次（跨裝置統計）">
+        <span class="visitor-dot"></span>
+        累計到訪 <b id="visitorCount">653</b> 人次
+      </div>
+    </div>
+
+    <div class="company-grid" id="companyGrid"></div>
+
+    <div class="features">
+      <div class="feature" data-goto="search"><div class="f-icon">🔍</div><h4>考古題搜尋</h4><p>依公司、年度、科目、關鍵字快速找題，逐題附答案、解析與來源。</p><span class="feature-go">前往搜尋 →</span></div>
+      <div class="feature" data-goto="quiz"><div class="f-icon">✏️</div><h4>測驗計分</h4><p>隨機抽題模擬作答，交卷立即算分，逐題檢討看解析。</p><span class="feature-go">開始測驗 →</span></div>
+      <div class="feature" data-goto="resources"><div class="f-icon">📄</div><h4>官方試題連結</h4><p>整理近五年各公司官方考古題 PDF 下載入口，想練完整卷直接下載。</p><span class="feature-go">查看連結 →</span></div>
+      <div class="feature" data-goto="history"><div class="f-icon">📋</div><h4>成績紀錄</h4><p>測驗成績自動記錄在你的瀏覽器，追蹤自己的進步。</p><span class="feature-go">查看成績 →</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 題庫搜尋 ===== -->
+  <section class="view" id="view-search">
+    <h2 class="section-title">🔍 考古題搜尋</h2>
+    <p class="section-sub">收錄各捷運公司近五年官方公開試題（程式解析自官方 PDF），逐題附正確答案；部分題目另有詳解。想練完整年度試卷請到「官方考古題」頁下載 PDF。</p>
+    <div class="filters">
+      <select id="filterCompany"></select>
+      <select id="filterYear"></select>
+      <select id="filterSubject"></select>
+      <input type="search" id="filterKeyword" placeholder="輸入關鍵字，例如：違約金、班距…">
+    </div>
+    <div class="result-count" id="resultCount"></div>
+    <div id="questionList"></div>
+  </section>
+
+  <!-- ===== 測驗專區 ===== -->
+  <section class="view" id="view-quiz">
+    <h2 class="section-title">✏️ 測驗專區</h2>
+    <p class="section-sub">選好範圍按「開始測驗」，系統會隨機抽題；交卷後立即計分並逐題檢討。</p>
+
+    <div class="quiz-setup" id="quizSetupBox">
+      <label>測驗範圍</label>
+      <select id="quizCompany"></select>
+      <label>科目</label>
+      <select id="quizSubject"></select>
+      <label>題數</label>
+      <select id="quizCount">
+        <option value="5">5 題（小試身手）</option>
+        <option value="10" selected>10 題（標準練習）</option>
+        <option value="20">20 題（完整模擬）</option>
+        <option value="50">50 題（整份試卷）</option>
+        <option value="all">全部題目</option>
+      </select>
+      <button class="btn btn-primary" id="startQuiz">🚇 開始測驗</button>
+      <p class="quiz-hint">高雄捷運不公布考古題，想準備高捷請選「綜合測驗」練共同科目（國文、英文、數理邏輯）。</p>
+    </div>
+
+    <div class="quiz-stage" id="quizStage" style="display:none">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+      <div class="quiz-meta"><span id="quizMetaLeft"></span><span id="quizMetaRight"></span></div>
+      <div class="quiz-q">
+        <div class="q-text" id="quizQText"></div>
+        <div id="quizOptions"></div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" id="quizQuit">放棄</button>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-ghost" id="quizPrev">← 上一題</button>
+          <button class="btn btn-primary" id="quizNext">下一題 →</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="quizResult" style="display:none"></div>
+    <div id="quizHistoryBox"></div>
+  </section>
+
+  <!-- ===== 官方考古題 ===== -->
+  <section class="view" id="view-resources">
+    <h2 class="section-title">📄 官方考古題與招考資訊</h2>
+    <p class="section-sub">近五年各捷運公司招考概況與官方試題下載入口。連結以查證當下為準，若失效請由各公司官方入口進入。</p>
+    <div id="resourceList"></div>
+  </section>
+
+  <footer>
+    本站為非官方練習平台，題目取自各捷運公司公開試題與網路公開題庫，僅供練習參考，題目與答案以各公司官方公布為準。<br>
+    成績紀錄只儲存在你自己的瀏覽器中，本站不蒐集任何個人資料。
+    <div class="signature">Designed &amp; Maintained by <span class="sig-name">Lao Tsai 1913</span></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
